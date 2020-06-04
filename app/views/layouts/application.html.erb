@@ -10,7 +10,13 @@
   </head>
 
   <body>
+  <div class="row">
+  <%= render 'layouts/sidebar'%>
+  <div class="col-10 p-0">
+  <%= render 'layouts/navbar'%>
   <%= render 'layouts/messages'%>
+  </div>
     <%= yield %>
+  </div>
   </body>
 </html>
