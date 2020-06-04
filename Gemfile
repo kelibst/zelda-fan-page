@@ -29,6 +29,17 @@ gem 'jbuilder', '~> 2.5'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
+gem 'bootstrap', '~> 4.4.1'
+
+gem 'jquery-rails'
+
+gem 'simple_form'
+
+gem 'font_awesome5_rails'
+
+gem 'devise'
+
+gem 'friendly_id', '~> 5.2.4'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -46,12 +57,14 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
+    gem 'rspec'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
