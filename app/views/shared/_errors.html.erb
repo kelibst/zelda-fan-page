@@ -1,0 +1,21 @@
+<% if obj.errors.any? %>
+<div class="row">
+    <div class=" card mx-auto">
+
+        <h2 class="card-title">
+            <%= pluralize(obj.errors.count, "error")%>
+            Prevented the post from being created!</h2>
+        </h2>
+        <div class="card-body">
+            <ul>
+                <% obj.errors.full_messages.each  do |msg|%>
+
+                <li class="text-danger"><%= msg%></li>
+
+                <%end%>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<% end %>

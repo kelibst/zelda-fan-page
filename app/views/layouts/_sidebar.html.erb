@@ -3,7 +3,7 @@
         <i class="fa fa-bars text-light"></i>
     </button>
 
-    <aside class="collapse navbar-collapse bg-dark" id="navbarTogglerDemo03">
+    <aside class="collapse navbar-collapse min-100-vh bg-dark" id="navbarTogglerDemo03">
     
                 <nav class="navbar bg-dark flex-column align-items-start navbar-dark ">
                 <div class="brand d-inline-flex">
@@ -35,6 +35,11 @@
                         <li class="nav-item">
                             <%= link_to "# Statistics", root_path, class: "nav-link text-uppercase"%>
                         </li>
+                        <% if user_signed_in? %>
+                        <li class="nav-item">
+                            <%= link_to "Logout", destroy_user_session_path, method: :delete, data: {confirm: "Log #{@user.last_name} out?"}, class: "btn btn-danger text-uppercase"%>
+                        </li>
+                        <% end %>
                     </ul>
                 </nav>
         
