@@ -1,5 +1,6 @@
-<div class="container-fluid">
+<div class="container-fluid bg-light d-sm-flex">
 
+<div class="col-sm-8">
     <ul class="nav nav-tabs">
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#post">Post</a>
@@ -17,8 +18,11 @@
     <div class="tab-pane container active" id="post">
       <% @opinions.each do |opinion| %>
         <div>
-          <div><%= link_to opinion.user.first_names, user_path(opinion.user), class: "btn btn-primary"  %></div>
-          <div><%= opinion.content %></div>
+          
+          <div class="py-4"><%= opinion.content %></div>
+          <div>
+            <span> Posted by: </span><%= link_to opinion.user.first_names, user_path(opinion.user), class: "btn btn-primary"  %> <span>at: <%= opinion.created_at %></span>
+          </div>
           
         </div>
       <% end %>
@@ -28,4 +32,14 @@
   </div>
 
   <%= link_to 'New Opinion', new_opinion_path %>
+  </div>
+  <div class="col-sm-4 py-4">
+    <h4 class="text-center text-secondary">List of all Users</h4>
+      <% @users.each do |user| %>
+       <div class="card">
+        <div class="card-body text-center">
+          <%= link_to user.first_names, user_path(user), class: "card-link text-capitalize" %>
+       </div>
+      <% end %>
+  </div>
 </div>
