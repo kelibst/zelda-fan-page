@@ -11,12 +11,16 @@
 
   <body>
   <div class="row">
+  <div class="container-fluid d-flex">
   <%= render 'layouts/sidebar'%>
-  <div class="col-10 p-0">
+ 
+  <div class="container-fluid p-0">
   <%= render 'layouts/navbar'%>
   <%= render 'layouts/messages'%>
+  <%= yield %>
   </div>
-    <%= yield %>
+   </div>
+    
   </div>
   </body>
 </html>

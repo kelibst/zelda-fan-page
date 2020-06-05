@@ -1,38 +1,42 @@
-<div class="bg-dark col-sm-2">
+<div class="wrapper bg-dark">
+    <button class="navbar-toggler bg-dark text-light py-3" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars text-light"></i>
+    </button>
 
-<aside class="side-bar p-0">
-    <nav class="navbar bg-dark flex-column align-items-start navbar-dark ">
-    <div class="brand d-inline-flex">
-        <a class="navbar-brand" href="#">
-            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="Logo" style="width:80px;" class="rounded-circle">
-        </a>
-        <%= link_to @user.first_names, root_path, class: "nav-link align-self-center p-0 text-capitalize text-light"%>
-    </div>
-        <div class="w-100 d-flex text-center py-4 justify-content-between">
-            <div class="col-6"> <p class="text-white">2332</p> <p class="following text-light">Following</p></div>
-            <div class="col-6"> <p class="text-white">1332</p> <p class="following text-light">Followers</p></div>
-        </div>
-
-        <ul class="navbar-nav w-100 my-2">
-            <li class="nav-item">
-              <%= link_to "Home", root_path, class: "nav-link active text-uppercase"%>
-            </li>
-            <li class="nav-item">
-                <%= link_to "@ Connect", root_path, class: "nav-link text-uppercase"%>
-            </li>
-            <li class="nav-item">
-                <%= link_to "# discover", root_path, class: "nav-link text-uppercase"%>
-            </li>
-
-            <li class="nav-item">
-                <%= link_to "# profile", root_path, class: "nav-link text-uppercase"%>
-            </li>
-
-            <li class="nav-item">
-                <%= link_to "# Statistics", root_path, class: "nav-link text-uppercase"%>
-            </li>
-        </ul>
-    </nav>
-</aside>
-
+    <aside class="collapse navbar-collapse bg-dark" id="navbarTogglerDemo03">
+    
+                <nav class="navbar bg-dark flex-column align-items-start navbar-dark ">
+                <div class="brand d-inline-flex">
+                    <a class="navbar-brand" href="#">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="Logo" style="width:80px;" class="rounded-circle">
+                    </a>
+                    <%= link_to @user.first_names, root_path, class: "nav-link align-self-center p-0 text-capitalize text-light"%>
+                </div>
+                    <div class="w-100 d-flex text-center py-4 justify-content-between">
+                        <div class="col-6"> <p class="text-white">2332</p> <p class="following text-light">Following</p></div>
+                        <div class="col-6"> <p class="text-white">1332</p> <p class="following text-light">Followers</p></div>
+                    </div>
+            
+                    <ul class="navbar-nav w-100 my-2">
+                        <li class="nav-item">
+                          <%= link_to "Home", root_path, class: "nav-link active text-uppercase"%>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to "@ Connect", root_path, class: "nav-link text-uppercase"%>
+                        </li>
+                        <li class="nav-item">
+                            <%= link_to "# discover", root_path, class: "nav-link text-uppercase"%>
+                        </li>
+            
+                        <li class="nav-item">
+                            <%= link_to "# profile", root_path, class: "nav-link text-uppercase"%>
+                        </li>
+            
+                        <li class="nav-item">
+                            <%= link_to "# Statistics", root_path, class: "nav-link text-uppercase"%>
+                        </li>
+                    </ul>
+                </nav>
+        
+        </aside>
 </div>

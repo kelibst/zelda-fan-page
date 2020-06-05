@@ -13,3 +13,22 @@
 
  @import 'bootstrap';
  @import 'font_awesome5_webfont';
+
+ .wrapper{
+    display: flex;
+    align-self: flex-start;
+    align-items: stretch;
+}
+
+button.bg-dark:focus {
+    align-self: flex-start;
+}
+
+    // #navbarTogglerDemo03{
+    //     min-width: 250px;
+    //     max-width: 250px;
+    // }
+
+    // #navbarTogglerDemo03.active {
+    //     margin-left: -250px;
+    // }
