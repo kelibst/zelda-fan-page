@@ -1,11 +1,11 @@
 <div class="wrapper bg-dark">
-    <button class="navbar-toggler bg-dark text-light py-3" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="sticky-top navbar-toggler bg-dark text-light py-3" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars text-light"></i>
     </button>
 
-    <aside class="collapse navbar-collapse min-100-vh bg-dark" id="navbarTogglerDemo03">
+    <aside class="collapse  navbar-collapse min-100-vh bg-dark" id="navbarTogglerDemo03">
     
-                <nav class="navbar bg-dark flex-column align-items-start navbar-dark ">
+                <nav class="navbar sticky-top bg-dark flex-column align-items-start navbar-dark ">
                 <div class="brand d-inline-flex">
                     <a class="navbar-brand" href="#">
                         <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="Logo" style="width:80px;" class="rounded-circle">
@@ -19,7 +19,11 @@
             
                     <ul class="navbar-nav w-100 my-2">
                         <li class="nav-item">
-                          <%= link_to "Home", root_path, class: "nav-link active text-uppercase"%>
+            
+                        <%= link_to root_path, class: "nav-link text-white text-uppercase font-weight-bolder" do %>
+                            <%= fa_icon('home', class: 'text-uppercase', text: 'Home', size: '1x')%>
+                        <% end %>
+                          
                         </li>
                         <li class="nav-item">
                             <%= link_to "@ Connect", root_path, class: "nav-link text-uppercase"%>
@@ -29,14 +33,19 @@
                         </li>
             
                         <li class="nav-item">
-                            <%= link_to "# profile", root_path, class: "nav-link text-uppercase"%>
+                        <%= link_to opinions_path, class: "nav-link text-uppercase" do %>
+                            <%= fa_icon('user', class: 'text-uppercase', text: 'Profile', size: '1x')%>
+                        <% end %>
                         </li>
             
                         <li class="nav-item">
-                            <%= link_to "# Statistics", root_path, class: "nav-link text-uppercase"%>
+                        <%= link_to opinions_path, class: "nav-link text-uppercase" do %>
+                            <%= fa_icon('chart-line', class: 'text-uppercase', text: 'Statistics', size: '1x')%>
+                        <% end %>
+                            
                         </li>
                         <% if user_signed_in? %>
-                        <li class="nav-item">
+                        <li class="nav-item py-3">
                             <%= link_to "Logout", destroy_user_session_path, method: :delete, data: {confirm: "Log #{@user.last_name} out?"}, class: "btn btn-danger text-uppercase"%>
                         </li>
                         <% end %>

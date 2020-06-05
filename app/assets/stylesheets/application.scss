@@ -18,6 +18,14 @@
     display: flex;
     align-self: flex-start;
     align-items: stretch;
+    height: 100%;
+}
+.sticky-top{
+    position: sticky;
+    top: 0;
+}
+button.navbar-toggler.bg-dark.text-light.py-3 {
+    align-self: flex-start;
 }
 
 button.bg-dark:focus {

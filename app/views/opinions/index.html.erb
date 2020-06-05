@@ -1,6 +1,15 @@
 <div class="container-fluid bg-light d-sm-flex">
 
 <div class="col-sm-8">
+
+  <div class="container-fluid my-4">
+    <h1 class="text-secondary">New Post</h1>
+
+    <%= render 'opinions/form', opinion: @opinion %>
+
+    
+  </div>
+
     <ul class="nav nav-tabs">
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#post">Post</a>
