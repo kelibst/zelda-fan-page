@@ -26,12 +26,21 @@
   <div class="tab-content">
     <div class="tab-pane container active" id="post">
       <% @opinions.each do |opinion| %>
-        <div>
+        <div class="card my-4">
           
-          <div class="py-4"><%= opinion.content %></div>
+          <div class="py-4 card-body mx-4">
+            <h6 class="text-uppercase text-secondary text-underline">Post Content</h6>
+            <p class="card-title"><%= link_to opinion.user.first_names, user_path(opinion.user), class: "btn text-uppercase"  %></p>
+
+              <%= opinion.content %>
+              <div class="card-info my-3">
+              <span> Posted at: </span> <span> <%= opinion.created_at %></span>
+            </div>
+        </div>
           <div>
-            <span> Posted by: </span><%= link_to opinion.user.first_names, user_path(opinion.user), class: "btn btn-primary"  %> <span>at: <%= opinion.created_at %></span>
+            
           </div>
+          <%= render 'comment', obj: opinion%>
           
         </div>
       <% end %>
@@ -39,9 +48,8 @@
     <div class="tab-pane container fade" id="comments">...</div>
     <div class="tab-pane container fade" id="followers">...</div>
   </div>
-
-  <%= link_to 'New Opinion', new_opinion_path %>
   </div>
+
   <div class="col-sm-4 py-4">
     <h4 class="text-center text-secondary">List of all Users</h4>
       <% @users.each do |user| %>

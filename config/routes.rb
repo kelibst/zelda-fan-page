@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'opinions#index'
-  resources :opinions
+  resources :opinions, only: [:index, :create] do 
+    resources :comments, only: [:create]
+  end
   devise_for :users
 
   resources :users, only:[:show]
