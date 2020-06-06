@@ -30,9 +30,11 @@
           
           <div class="py-4 card-body mx-4">
             <h6 class="text-uppercase text-secondary text-underline">Post Content</h6>
-            <p class="card-title"><%= link_to opinion.user.first_names, user_path(opinion.user), class: "btn text-uppercase"  %></p>
-
-              <%= opinion.content %>
+            <p class="card-title">Author: <%= link_to opinion.user.first_names, user_path(opinion.user), class: "btn text-uppercase"  %></p>
+            <p class="opinion-content border-danger border rounded p-4">
+               <%= opinion.content %>
+            </p>
+             
               <div class="card-info my-3">
               <span> Posted at: </span> <span> <%= opinion.created_at %></span>
             </div>
@@ -54,8 +56,16 @@
     <h4 class="text-center text-secondary">List of all Users</h4>
       <% @users.each do |user| %>
        <div class="card">
+         <p class="card-title text-center pt-4"><%= link_to user.first_names, user_path(user), class: "text-dark  text-capitalize" %></p>
         <div class="card-body text-center">
-          <%= link_to user.first_names, user_path(user), class: "card-link text-capitalize" %>
+          <%if (@current_user.id != user.id)%>
+            <% if Friendship.where(user_id: current_user.id, follower_id: user.id).exists?  %>
+              <%= link_to "Unfollow", unfollow_path(:id => user.id), method: :delete, data: {confirm: "You are about to Unfollow #{user.last_name}"}, class: "card-link btn btn-danger"%>
+            <%elsif !Friendship.where(user_id: current_user.id, follower_id: user.id).exists? %>
+              <%= link_to "Follow", follow_path(:id => user.id), class: "card-link btn btn-primary"%>
+
+            <% end %>
+          <% end %>
        </div>
       <% end %>
   </div>

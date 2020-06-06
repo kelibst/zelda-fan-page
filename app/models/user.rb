@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :opinions, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  has_many :friendships, dependent: :destroy
+  has_many :followers,  class_name: 'Friendship', foreign_key: 'follower_id', dependent: :destroy
+
   validates :first_names, presence: true, length: {in: 3..200}
   validates :last_name, presence: true, length: {in: 3..100}
 end
