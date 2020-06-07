@@ -15,7 +15,7 @@
       <a class="nav-link active" data-toggle="tab" href="#post">Post</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#comments">Comments</a>
+      <a class="nav-link" data-toggle="tab" href="#following">Following</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#followers">Followers</a>
@@ -53,8 +53,20 @@
         </div>
       <% end %>
     </div>
-    <div class="tab-pane container fade" id="comments">...</div>
-    <div class="tab-pane container fade" id="followers">...</div>
+    <div class="tab-pane container fade" id="following">
+        <% @user.friendships.following(@user).each do |following|%>
+            <div class="card">
+                <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.follower.first_names, user_path(following.follower), class: "text-capitalize" %></h5></div>
+            </div>
+        <% end %>
+    </div>
+    <div class="tab-pane container fade" id="followers">
+        <% Friendship.all.followers(@user).each do |following|%>
+            <div class="card">
+                <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.user.first_names, user_path(following.user), class: "text-capitalize" %></h5></div>
+            </div>
+        <% end %>
+    </div>
   </div>
   </div>
 
@@ -69,22 +81,22 @@
     <h4 class="text-light font-weight-bolder my-4 card-title text-center text-uppercase"><%= "#{@user.first_names} #{@user.last_name}"%></h4>
     <div class="card-body d-flex text-center justify-content-center">
         <div class="tile p-3 border mx-2 rounded">
-            <p class="text-secondary"><%= @user.friendships.following(@user).count %></p>
+            <p class="text-light"><%= @user.friendships.following(@user).count %></p>
             <p class="text-white">Following</p>
         </div>
         <div class="tile p-3 border mx-2 rounded">
-            <p class="text-secondary"><%= @user.opinions.all.count %></p>
+            <p class="text-light"><%= @user.opinions.all.count %></p>
             <p class="text-white">Posts</p>
         </div>
         <div class="tile p-3 border mx-2 rounded">
-            <p class="text-secondary"><%= Friendship.all.followers(@user).count %></p>
+            <p class="text-light"><%= Friendship.all.followers(@user).count %></p>
             <p class="text-white"> Followers</p>
         </div>
     </div>
   </div>
     <h4 class="text-center text-secondary my-4 ">List of all Users</h4>
       <% @users.each do |user| %>
-       <div class="card">
+       <div class="card my-2">
          <p class="card-title text-center pt-4"><%= link_to user.first_names, user_path(user), class: "text-dark  text-capitalize" %></p>
         <div class="card-body text-center">
           <%if (@current_user.id != user.id)%>
@@ -95,8 +107,9 @@
 
             <% end %>
           <% end %>
-       </div>
+       </div>  
+    </div>
       <% end %>
-  </div>
+
 </div>
 </div>

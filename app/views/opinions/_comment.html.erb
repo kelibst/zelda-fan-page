@@ -3,7 +3,7 @@
 
 
   <% obj.comments.each do |comment| %>
-    <div class="card">
+    <div class="card my-2">
     <div class="card-body">
         <h6 class="card-title">
             <%= link_to comment.user.first_names, user_path(comment.user), class: "text-capitalize" %>
