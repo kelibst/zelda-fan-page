@@ -10,11 +10,11 @@
                     <a class="navbar-brand" href="#">
                         <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="Logo" style="width:80px;" class="rounded-circle">
                     </a>
-                    <%= link_to @user.first_names, root_path, class: "nav-link align-self-center p-0 text-capitalize text-light"%>
+                    <%= link_to current_user.first_names, root_path, class: "nav-link align-self-center p-0 text-capitalize text-light"%>
                 </div>
                     <div class="w-100 d-flex text-center py-4 justify-content-between">
-                        <div class="col-6"> <p class="text-white">2332</p> <p class="following text-light">Following</p></div>
-                        <div class="col-6"> <p class="text-white">1332</p> <p class="following text-light">Followers</p></div>
+                        <div class="col-6"> <p class="text-white"><%= current_user.friendships.following(current_user).count%></p> <p class="following text-light">Following</p></div>
+                        <div class="col-6"> <p class="text-white"><%= Friendship.all.followers(current_user).count%></p> <p class="following text-light">Followers</p></div>
                     </div>
             
                     <ul class="navbar-nav w-100 my-2">

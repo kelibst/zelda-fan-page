@@ -6,7 +6,7 @@ class FriendshipsController < ApplicationController
             follow_obj.save 
             @user = current_user
             respond_to do |format|
-                format.html { redirect_to opinions_url, notice: "Following this user #{@user.first_names} #{@user.last_name} was successfully destroyed." }
+                format.html { redirect_to opinions_url, notice: "Following this user #{@user.first_names} #{@user.last_name} was successful." }
             end
     end
 
