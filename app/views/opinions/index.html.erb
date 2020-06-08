@@ -1,9 +1,11 @@
-<div class="container-fluid bg-light d-sm-flex">
+<div class="container-fluid p-0 m-0  bg-light d-sm-flex">
 
-<div class="col-sm-8">
-
-  <div class="container-fluid my-4">
-    <h1 class="text-secondary">New Post</h1>
+<div class="col-sm-8 m-0 p-0">
+  <div class="container-fluid p-0 cover-img">
+    <img src="https://images.unsplash.com/photo-1591468069148-5cc79ed1caaa?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="cover image" class="img-contain">
+  </div>
+  <div class="container-fluid p-4 my-4">
+    <h4 class="display-5 font-weight-bolder text-secondary">Say something about <span class="text-danger">The legend of Zelda</span></h4>
 
     <%= render 'opinions/form', obj: @opinion %>
 
@@ -65,16 +67,18 @@
   </div>
 
   <div class="col-sm-4 py-4">
-    <h4 class="text-center text-secondary">List of Users to Follow</h4>
+    <div class="container-fluid my-4">
+      <h6 class="display-6 text-uppercase font-weight-bolder text-secondary">Who to follow <i class="fas float-right fa-recycle"></i></h6> 
+    </div>
       <% @users.each do |user| %>
       <% if !following?(user) && @current_user.id != user.id%>
-       <div class="card my-2">
-          <p class="card-title text-center pt-4"><%= link_to user.first_names, user_path(user), class: "text-dark  text-capitalize" %></p>
+       <div class="card flex-row my-2">
           
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="Logo" style="width:120px;" class="card-img-top m-4 rounded-circle">
           <div class="card-body text-center">
-            
+            <p class="card-title text-center py-4"><%= link_to user.first_names, user_path(user), class: "text-primary  text-capitalize" %></p>
               <% if !following?(user)  %>
-                <%= link_to "Follow", follow_path(:id => user.id), class: "card-link btn btn-primary"%>
+                <%= link_to "Follow", follow_path(:id => user.id), class: "w-100 card-link btn btn-primary"%>
               <% end %>
             
           </div>

@@ -14,7 +14,7 @@
   <div class="container-fluid d-flex">
   <%= render 'layouts/sidebar' unless !user_signed_in?%>
  
-  <div class="container-fluid p-0 mx-4">
+  <div class="container-fluid p-0">
   <%= render 'layouts/navbar' unless !user_signed_in?%>
   <%= render 'layouts/messages' unless !user_signed_in?%>
   <%= yield %>
