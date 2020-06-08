@@ -2,13 +2,14 @@
 
 <div class="col-sm-8">
 
+<% unless current_user == @user %>
   <div class="container-fluid my-4">
-    <h1 class="text-secondary">New Post</h1>
+    <h6 class="text-secondary display-5 font-weight-bolder text-center">Tell the world something you like about <span class="text-danger">The Legend of  Zelda!</span></h6>
 
     <%= render 'opinions/form', obj: @opinion %>
-
     
   </div>
+<% end %>
 
     <ul class="nav nav-tabs">
     <li class="nav-item">
