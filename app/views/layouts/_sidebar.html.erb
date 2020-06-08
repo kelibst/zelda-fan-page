@@ -33,7 +33,7 @@
                         </li>
             
                         <li class="nav-item">
-                        <%= link_to opinions_path, class: "nav-link text-uppercase" do %>
+                        <%= link_to user_path(current_user), class: "nav-link text-uppercase" do %>
                             <%= fa_icon('user', class: 'text-uppercase', text: 'Profile', size: '1x')%>
                         <% end %>
                         </li>
