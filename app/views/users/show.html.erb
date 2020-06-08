@@ -73,7 +73,7 @@
   </div>
   </div>
 
-  <div class="col-sm-4 py-4">
+  <div class="col-sm-4">
     <div class="container-fluid">
     <div class="card bg-dark">
 
@@ -83,7 +83,7 @@
 
     <h4 class="text-light font-weight-bolder my-4 card-title text-center text-uppercase"><%= "#{@user.first_names} #{@user.last_name}"%></h4>
     <div class="container-fluid my-4">
-      <% if !following?(@user) %>
+      <% if !following?(@user) && current_user != @user %>
           <%= link_to "Follow", follow_path(:id => @user.id), class: "card-link w-100 btn btn-success"%>
       <% end %>
     </div>
