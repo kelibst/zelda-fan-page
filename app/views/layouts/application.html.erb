@@ -16,7 +16,7 @@
  
   <div class="container-fluid p-0">
   <%= render 'layouts/navbar' unless !user_signed_in?%>
-  <%= render 'layouts/messages' unless !user_signed_in?%>
+  <%= render 'layouts/messages' unless user_signed_in?%>
   <%= yield %>
   </div>
    </div>

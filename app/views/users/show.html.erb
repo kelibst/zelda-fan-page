@@ -2,7 +2,7 @@
 
 <div class="col-sm-8 m-0 p-0">
   <div class="container-fluid p-0 cover-img">
-    <img src="https://images.unsplash.com/photo-1591468069148-5cc79ed1caaa?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="cover image" class="img-contain">
+   <%= image_tag "https://images.unsplash.com/photo-1591468069148-5cc79ed1caaa?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "cover_image", class: "img-contain"%>
   </div>
 <% unless current_user != @user %>
   <div class="container-fluid my-4">
@@ -77,9 +77,13 @@
     <div class="container-fluid">
     <div class="card bg-dark">
 
-    <div class="my-4 mx-auto">  
-        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="Logo" style="width:80px;" class="card-img-top rounded-circle">
-    </div>
+    <div class="my-4 mx-auto">
+    <% if @user.photo.url.nil? %>  
+    <%= image_tag "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", width: "120", class: "rounded-circle"%>
+      <% else %>
+      <%= image_tag @user.photo.url.to_s , alt: "logo", width: 120, class: "rounded-circle"%>
+    <% end %>
+  </div>
 
     <h4 class="text-light font-weight-bolder my-4 card-title text-center text-uppercase"><%= "#{@user.first_names} #{@user.last_name}"%></h4>
     <div class="container-fluid my-4">
@@ -108,9 +112,13 @@
       <%if (@current_user.id != user.id)%>
        <div class="card flex-row my-2">
        
-          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="Logo" style="width:120px;" class="card-img-top m-4 rounded-circle">
-        
-         
+        <% if user.photo.url.nil? %>  
+        <%= image_tag "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "profile", width: "120", class: " m-4  rounded-circle"%>
+        <% else %>
+        <%= image_tag user.photo.url.to_s , alt: "logo", width: 120, class: "m-4 rounded-circle"%>
+        <% end %>
+      
+                 
         <div class="card-body text-center">
           <p class="card-title text-center py-4"><%= link_to user.first_names, user_path(user), class: "text-primary text-uppercase" %></p>         
             <% if following?(user) %>

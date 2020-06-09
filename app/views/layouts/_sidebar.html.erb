@@ -7,9 +7,15 @@
     
                 <nav class="navbar sticky-top bg-dark flex-column align-items-start navbar-dark ">
                 <div class="brand d-inline-flex">
-                    <a class="navbar-brand" href="#">
-                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="Logo" style="width:80px;" class="rounded-circle">
-                    </a>
+                <a class="navbar-brand" href="#">
+                    <% if current_user.photo.url.nil? %>  
+                    <%= image_tag "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "profile", width: "80", class: " m-4  rounded-circle"%>
+                    <% else %>
+                    <%= image_tag current_user.photo.url.to_s , alt: "logo", width: 80, class: "m-4 rounded-circle"%>
+                    <% end %>                    
+                </a>
+                    
+
                     <%= link_to current_user.first_names, user_path(current_user), class: "nav-link align-self-center p-0 text-capitalize text-light"%>
                 </div>
                     <div class="w-100 d-flex text-center py-4 justify-content-between">

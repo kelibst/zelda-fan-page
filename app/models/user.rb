@@ -11,4 +11,6 @@ class User < ApplicationRecord
 
   validates :first_names, presence: true, length: {in: 3..200}
   validates :last_name, presence: true, length: {in: 3..100}
+
+  mount_uploader :photo, ProfileImageUploader
 end
