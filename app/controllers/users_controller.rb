@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_current_user, only: %i[show index destroy]
-  
-   
+
 
     def index
       @users = User.all

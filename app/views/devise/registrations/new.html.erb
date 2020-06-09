@@ -13,12 +13,15 @@
                 autofocus: true,
                 input_html: { autocomplete: "first-names" }%>
      <%= f.input :last_name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "last-name" }%>
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "last-name" }%>
     <%= f.label :photo do %> 
               <%= f.file_field :photo %>  
               <% end %>
+    <%= f.label       :cover_image do %> 
+    <%= f.file_field  :cover_image %>  
+                      <% end %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,

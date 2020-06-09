@@ -2,7 +2,12 @@
 
 <div class="col-sm-8 m-0 p-0">
   <div class="container-fluid p-0 cover-img">
-   <%= image_tag "https://images.unsplash.com/photo-1591468069148-5cc79ed1caaa?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "cover_image", class: "img-contain"%>
+    <% if @user.cover_image.url.nil? %>  
+    <%= image_tag "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "profile", class: " img-contain"%>
+    <% else %>
+    <%= image_tag @user.cover_image.url.to_s , alt: "logo",  class: "img-contain"%>
+    <% end %>
+
   </div>
 <% unless current_user != @user %>
   <div class="container-fluid my-4">
