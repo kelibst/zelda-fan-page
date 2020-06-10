@@ -50,7 +50,7 @@
             </p>
              
               <div class="card-info my-3">
-              <span> Posted at: </span> <span> <%= opinion.created_at %></span>
+              <span> Posted </span> <span> <%= time_ago_in_words(opinion.created_at)  %>ago</span>
             </div>
         </div>
           <div>
@@ -114,24 +114,25 @@
        
     </div>
   </div>
-    <h4 class="text-center text-secondary my-4 ">List of all Users</h4>
-      <% @users.each do |user| %>
-      <%if (@current_user.id != user.id)%>
+    <h4 class="text-center text-secondary my-4 ">List of all Followers</h4>
+      <% Friendship.all.followers(@user).each do |following|%>
+      <%if (@current_user.id != following.user.id)%>
+      
        <div class="card flex-row my-2">
        
-        <% if user.photo.url.nil? %>  
+        <% if following.user.photo.url.nil? %>  
         <%= image_tag "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "profile", width: "120", class: " m-4  rounded-circle"%>
         <% else %>
-        <%= image_tag user.photo.url.to_s , alt: "logo", width: 120, class: "m-4 rounded-circle"%>
+        <%= image_tag following.user.photo.url.to_s , alt: "logo", width: 120, class: "m-4 rounded-circle"%>
         <% end %>
       
                  
         <div class="card-body text-center">
-          <p class="card-title text-center py-4"><%= link_to user.first_names, user_path(user), class: "text-primary text-uppercase" %></p>         
-            <% if following?(user) %>
-              <%= link_to "Unfollow", unfollow_path(:id => user.id), method: :delete, data: {confirm: "You are about to Unfollow #{user.last_name}"}, class: "w-100 card-link btn btn-danger"%>
-            <%elsif !following?(user) %>
-              <%= link_to "Follow", follow_path(:id => user.id), class: "card-link btn btn-primary"%>
+          <p class="card-title text-center py-4"><%= link_to following.user.first_names, user_path(following.user), class: "text-primary text-uppercase" %></p>         
+            <% if following?(following.user) %>
+              <%= link_to "Unfollow", unfollow_path(:id => following.user.id), method: :delete, data: {confirm: "You are about to Unfollow #{following.user.last_name}"}, class: "w-100 card-link btn btn-danger"%>
+            <%elsif !following?(following.user) %>
+              <%= link_to "Follow", follow_path(:id => following.user.id), class: "card-link btn btn-primary"%>
             <% end %>          
        </div>   
     </div>

@@ -2,7 +2,8 @@
 
 <div class="col-sm-8 m-0 p-0">
   <div class="container-fluid p-0 cover-img">
-    <img src="https://images.unsplash.com/photo-1591468069148-5cc79ed1caaa?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="cover image" class="img-contain">
+   
+    <%= image_tag "/uploads/user/cover_image/9/zelda3.jpg", alt: "cover image", class: "img-contain"%>
   </div>
   <div class="container-fluid p-4 my-4">
     <h4 class="display-5 font-weight-bolder text-secondary">Say something about <span class="text-danger">The legend of Zelda</span></h4>
@@ -38,7 +39,7 @@
             </p>
              
               <div class="card-info my-3">
-              <span> Posted at: </span> <span> <%= opinion.created_at %></span>
+              <span> Posted </span> <span> <%= time_ago_in_words(opinion.created_at)  %> ago</span>
             </div>
         </div>
           <div>
