@@ -3,7 +3,7 @@
 <div class="col-sm-8 m-0 p-0">
   <div class="container-fluid p-0 cover-img">
     <% if @user.cover_image.url.nil? %>  
-    <%= image_tag "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "profile", class: " img-contain"%>
+      <%= image_tag "https://images.unsplash.com/photo-1591468069148-5cc79ed1caaa?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "profile", class: " img-contain"%>
     <% else %>
     <%= image_tag @user.cover_image.url.to_s , alt: "logo",  class: "img-contain"%>
     <% end %>
@@ -94,6 +94,8 @@
     <div class="container-fluid my-4">
       <% if !following?(@user) && current_user != @user %>
           <%= link_to "Follow", follow_path(:id => @user.id), class: "card-link w-100 btn btn-success"%>
+          <% else %>
+          <%= link_to "Edit Profile", edit_user_registration_path(:id=> @user.id), class: "card-link w-100 btn btn-success"%>
       <% end %>
     </div>
     <div class="card-body d-flex text-center justify-content-center">

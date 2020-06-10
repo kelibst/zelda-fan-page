@@ -19,8 +19,15 @@
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
                 hint: "we need your current password to confirm your changes",
-                required: true,
+                required: false,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.label       :cover_image do %> 
+    <%= f.file_field  :cover_image %>  
+          <% end %>
+
+    <%= f.label :photo do %> 
+    <%= f.file_field :photo %>  
+    <% end %>
   </div>
 
   <div class="form-actions">

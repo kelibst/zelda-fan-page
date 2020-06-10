@@ -15,7 +15,7 @@
  @import 'font_awesome5_webfont';
  .cover-img{
      width: 100%;
-     height: 400px;
+     height: 450px;
      padding: 0;
      margin: 0;
  }
@@ -43,4 +43,7 @@ button.bg-dark:focus {
 
 .min-100-vh{
     min-height: 100vh;
+}
+.brand{
+    font-size: 20px;
 }
