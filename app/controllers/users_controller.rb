@@ -4,9 +4,8 @@ class UsersController < ApplicationController
 
     def index
       @users = User.all
-      @user = User.find(params[:id])
       @opinion = Opinion.new
-      @posts = @user.opinions.ordered_by_most_recent
+      @user = current_user
     end
 
     def show

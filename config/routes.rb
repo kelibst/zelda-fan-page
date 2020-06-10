@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, except: [:show, :index]
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index]
   get 'follow' => 'friendships#follow'
   post 'follow' => 'friendships#follow'
   delete 'unfollow' => 'friendships#unfollow'
