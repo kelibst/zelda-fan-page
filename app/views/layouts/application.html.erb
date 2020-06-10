@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ZeldaFanPage</title>
+    <title>Zelda Fan Page</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,17 @@
   </head>
 
   <body>
-    <%= yield %>
+  <div class="row">
+  <div class="container-fluid d-flex">
+  <%= render 'layouts/sidebar' unless !user_signed_in?%>
+ 
+  <div class="container-fluid p-0">
+  <%= render 'layouts/navbar' unless !user_signed_in?%>
+  <%= render 'layouts/messages' unless user_signed_in?%>
+  <%= yield %>
+  </div>
+   </div>
+    
+  </div>
   </body>
 </html>

@@ -1,0 +1,91 @@
+<div class="container-fluid p-0 m-0  bg-light d-sm-flex">
+
+<div class="col-sm-8 m-0 p-0">
+  <div class="container-fluid p-0 cover-img">
+   
+    <%= image_tag "/uploads/user/cover_image/9/zelda3.jpg", alt: "cover image", class: "img-contain"%>
+  </div>
+  <div class="container-fluid p-4 my-4">
+    <h4 class="display-5 font-weight-bolder text-secondary">Say something about <span class="text-danger">The legend of Zelda</span></h4>
+
+    <%= render 'opinions/form', obj: @opinion %>
+
+    
+  </div>
+
+    <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#post">Post</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#comments">Following</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#followers">Followers</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane container active" id="post">
+      <% @opinions.each do |opinion| %>
+        <div class="card my-4">
+          
+          <div class="py-4 card-body mx-4">
+            <h6 class="text-uppercase text-secondary text-underline">Post Content</h6>
+            <p class="card-title">Author: <%= link_to opinion.user.first_names, user_path(opinion.user), class: "btn text-uppercase"  %></p>
+            <p class="opinion-content border-danger border rounded p-4">
+               <%= opinion.content %>
+            </p>
+             
+              <div class="card-info my-3">
+              <span> Posted </span> <span> <%= time_ago_in_words(opinion.created_at)  %> ago</span>
+            </div>
+        </div>
+          <div>
+            
+          </div>
+          <%= render 'comment', obj: opinion%>
+          
+        </div>
+      <% end %>
+    </div>
+    <div class="tab-pane container fade" id="comments">
+      <% @user.friendships.following(@user).each do |following|%>
+      <div class="card">
+          <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.follower.first_names, user_path(following.follower), class: "text-capitalize" %></h5></div>
+      </div>
+      <% end %>
+    </div>
+    <div class="tab-pane container fade" id="followers">
+      <% Friendship.all.followers(@user).each do |following|%>
+      <div class="card">
+          <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.user.first_names, user_path(following.user), class: "text-capitalize" %></h5></div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  </div>
+
+  <div class="col-sm-4 py-4">
+    <div class="container-fluid my-4">
+      <h6 class="display-6 text-uppercase font-weight-bolder text-secondary">Who to follow <i class="fas float-right fa-recycle"></i></h6> 
+    </div>
+      <% @users.each do |user| %>
+      <% if !following?(user) && @current_user.id != user.id%>
+       <div class="card flex-row my-2">
+          
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="Logo" style="width:120px;" class="card-img-top m-4 rounded-circle">
+          <div class="card-body text-center">
+            <p class="card-title text-center py-4"><%= link_to user.first_names, user_path(user), class: "text-primary  text-capitalize" %></p>
+              <% if !following?(user)  %>
+                <%= link_to "Follow", follow_path(:id => user.id), class: "w-100 card-link btn btn-primary"%>
+              <% end %>
+            
+          </div>
+        </div>
+        
+      <% end %>
+      
+      <% end %>
+</div>

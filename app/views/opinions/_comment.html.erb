@@ -1,0 +1,22 @@
+
+<div class="container-fluid my-4">
+
+
+  <% obj.comments.each do |comment| %>
+    <div class="card my-2">
+    <div class="card-body">
+        <h6 class="card-title">
+            <%= link_to comment.user.first_names, user_path(comment.user), class: "text-capitalize" %>
+        </h6>
+        <p class="text-secondary">
+          <%= comment.content %>
+        </p>
+    </div>
+    </div>
+ <% end %>
+
+ <%= form_for(obj.comments.new, url: opinion_comments_path(obj)) do |form| %>
+      <%= form.text_field :content, id: :comment_content, class: 'form-control', placeholder: 'Add new Comment' %>
+      <%= form.submit 'Comment', class: 'btn btn-secondary' %>
+ <% end %>
+</div>

@@ -1,0 +1,45 @@
+<div class="container-fluid">
+<div class="col-sm-6 mx-auto my-4">
+
+
+<h2 class="display-5 text-secondary font-weight-bolder text-center my-4">Sign up</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {multipart: :true}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :first_names,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "first-names" }%>
+     <%= f.input :last_name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "last-name" }%>
+    <%= f.label :photo do %> 
+              <%= f.file_field :photo %>  
+              <% end %>
+    <%= f.label       :cover_image do %> 
+    <%= f.file_field  :cover_image %>  
+                      <% end %>
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%>
+    <%= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password" } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up", class: "btn btn-primary w-100 my-2" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+</div>

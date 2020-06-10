@@ -1,0 +1,143 @@
+<div class="container-fluid m-0 p-0 bg-light d-sm-flex">
+
+<div class="col-sm-8 m-0 p-0">
+  <div class="container-fluid p-0 cover-img">
+    <% if @user.cover_image.url.nil? %>  
+      <%= image_tag "https://images.unsplash.com/photo-1591468069148-5cc79ed1caaa?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "profile", class: " img-contain"%>
+    <% else %>
+    <%= image_tag @user.cover_image.url.to_s , alt: "logo",  class: "img-contain"%>
+    <% end %>
+
+  </div>
+<% unless current_user != @user %>
+  <div class="container-fluid my-4">
+    <h6 class="text-secondary display-5 font-weight-bolder text-center">Tell the world something you like about <span class="text-danger">The Legend of  Zelda!</span></h6>
+
+    <%= render 'opinions/form', obj: @opinion %>
+    
+  </div>
+<% end %>
+
+    <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#post">Post</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#following">Following</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#followers">Followers</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane container active" id="post">
+        <% if @opinions.length > 0 %>
+            <p class="my-4"> All Post by: <h4 class="text-secondary text-uppercase font-weight-bolder"><%= @user.first_names%></h4></p>
+
+            <% else %>
+            <h4 class="text-secondary my-4 font-weight-bolder text-center"><%= @user.first_names%> has no posts yet!</h4>
+       <% end %>
+      <% @opinions.each do |opinion| %>
+        <div class="card my-4">
+          
+          <div class="py-4 card-body mx-4">
+            <h6 class="text-uppercase text-secondary text-underline">Post Content</h6>
+            <p class="card-title">Author: <%= link_to opinion.user.first_names, user_path(opinion.user), class: "btn text-uppercase"  %></p>
+            <p class="opinion-content border-danger border rounded p-4">
+               <%= opinion.content %>
+            </p>
+             
+              <div class="card-info my-3">
+              <span> Posted </span> <span> <%= time_ago_in_words(opinion.created_at)  %>ago</span>
+            </div>
+        </div>
+          <div>
+            
+          </div>
+          <%= render 'opinions/comment', obj: opinion%>
+          
+        </div>
+      <% end %>
+    </div>
+    <div class="tab-pane container fade" id="following">
+        <% @user.friendships.following(@user).each do |following|%>
+            <div class="card">
+                <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.follower.first_names, user_path(following.follower), class: "text-capitalize" %></h5></div>
+            </div>
+        <% end %>
+    </div>
+    <div class="tab-pane container fade" id="followers">
+        <% Friendship.all.followers(@user).each do |following|%>
+            <div class="card">
+                <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.user.first_names, user_path(following.user), class: "text-capitalize" %></h5></div>
+            </div>
+        <% end %>
+    </div>
+  </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="container-fluid">
+    <div class="card bg-dark">
+
+    <div class="my-4 mx-auto">
+    <% if @user.photo.url.nil? %>  
+    <%= image_tag "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", width: "120", class: "rounded-circle"%>
+      <% else %>
+      <%= image_tag @user.photo.url.to_s , alt: "logo", width: 120, class: "rounded-circle"%>
+    <% end %>
+  </div>
+
+    <h4 class="text-light font-weight-bolder my-4 card-title text-center text-uppercase"><%= "#{@user.first_names} #{@user.last_name}"%></h4>
+    <div class="container-fluid my-4">
+      <% if !following?(@user) && current_user != @user %>
+          <%= link_to "Follow", follow_path(:id => @user.id), class: "card-link w-100 btn btn-success"%>
+          <% else %>
+          <%= link_to "Edit Profile", edit_user_registration_path(:id=> @user.id), class: "card-link w-100 btn btn-success"%>
+      <% end %>
+    </div>
+    <div class="card-body d-flex text-center justify-content-center">
+        <div class="tile p-3 border mx-2 rounded">
+            <p class="text-light"><%= @user.friendships.following(@user).count %></p>
+            <p class="text-white">Following</p>
+        </div>
+        <div class="tile p-3 border mx-2 rounded">
+            <p class="text-light"><%= @user.opinions.all.count %></p>
+            <p class="text-white">Posts</p>
+        </div>
+        <div class="tile p-3 border mx-2 rounded">
+            <p class="text-light"><%= Friendship.all.followers(@user).count %></p>
+            <p class="text-white"> Followers</p>
+        </div>
+       
+    </div>
+  </div>
+    <h4 class="text-center text-secondary my-4 ">List of all Followers</h4>
+      <% Friendship.all.followers(@user).each do |following|%>
+      <%if (@current_user.id != following.user.id)%>
+      
+       <div class="card flex-row my-2">
+       
+        <% if following.user.photo.url.nil? %>  
+        <%= image_tag "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "profile", width: "120", class: " m-4  rounded-circle"%>
+        <% else %>
+        <%= image_tag following.user.photo.url.to_s , alt: "logo", width: 120, class: "m-4 rounded-circle"%>
+        <% end %>
+      
+                 
+        <div class="card-body text-center">
+          <p class="card-title text-center py-4"><%= link_to following.user.first_names, user_path(following.user), class: "text-primary text-uppercase" %></p>         
+            <% if following?(following.user) %>
+              <%= link_to "Unfollow", unfollow_path(:id => following.user.id), method: :delete, data: {confirm: "You are about to Unfollow #{following.user.last_name}"}, class: "w-100 card-link btn btn-danger"%>
+            <%elsif !following?(following.user) %>
+              <%= link_to "Follow", follow_path(:id => following.user.id), class: "card-link btn btn-primary"%>
+            <% end %>          
+       </div>   
+    </div>
+      <% end %> 
+      <% end %>
+
+</div>
+</div>

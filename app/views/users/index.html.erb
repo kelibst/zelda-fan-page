@@ -1,0 +1,32 @@
+<div class="container-fluid bg-light d-sm-flex">
+
+  <div class="col-sm-8">
+    <div class="container-fluid p-0 cover-img">
+    <% if @user.cover_image.url.nil? %>  
+      <%= image_tag "https://images.unsplash.com/photo-1591468069148-5cc79ed1caaa?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "profile", class: " img-contain"%>
+    <% else %>
+    <%= image_tag @user.cover_image.url.to_s , alt: "logo",  class: "img-contain"%>
+    <% end %>
+    </div>
+  </div>
+
+
+  <div class="col-sm-4 py-4">
+    <h4 class="text-center text-secondary">List of all Users</h4>
+      <% @users.each do |user| %>
+       <div class="card">
+         <p class="card-title text-center pt-4"><%= link_to user.first_names, user_path(user), class: "text-dark  text-capitalize" %></p>
+        <div class="card-body text-center">
+          <%if (current_user.id != user.id)%>
+            <% if Friendship.where(user_id: current_user.id, follower_id: user.id).exists?  %>
+              <%= link_to "Unfollow", unfollow_path(:id => user.id), method: :delete, data: {confirm: "You are about to Unfollow #{user.last_name}"}, class: "card-link btn btn-danger"%>
+            <%elsif !Friendship.where(user_id: current_user.id, follower_id: user.id).exists? %>
+              <%= link_to "Follow", follow_path(:id => user.id), class: "card-link btn btn-primary"%>
+
+            <% end %>
+          <% end %>
+       </div>
+      <% end %>
+  </div>
+</div>
+</div>
