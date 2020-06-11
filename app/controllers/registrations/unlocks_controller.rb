@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Registrations::UnlocksController < Devise::UnlocksController
   # GET /resource/unlock/new
   # def new
