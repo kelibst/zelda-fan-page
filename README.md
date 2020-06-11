@@ -1,8 +1,9 @@
  Zela-Fan-Page - RoR Capstone Project
 
 > This project it was built on top of my knowledge of RoR.
+> Idea and design by [Gregoire Veila](https://www.behance.net/gallery/14286087/Twitter-Redesign-of-UI-details)
 
-(![screenshot](/app/assets/images/screen2.png)
+![screenshot](/app/assets/images/screen2.png)
 
 ## What it does
 
@@ -133,6 +134,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Microverse
+- [Gregoire Veila](https://www.behance.net/gallery/14286087/Twitter-Redesign-of-UI-details)
 
 ## 📝 License
 
