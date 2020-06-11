@@ -54,7 +54,8 @@ Its a game Legend of Zelda community page.
 
 ## Video Presentation
 
-[Video Presentation](https://www.loom.com/share/1b1522f11ff64b1d9da92c4ec73b3c38)
+[![Watch the video](/app/assets/images/video.png)](https://www.loom.com/share/1b1522f11ff64b1d9da92c4ec73b3c38)
+
 
 ## Getting Started
 
