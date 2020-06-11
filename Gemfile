@@ -45,6 +45,9 @@ gem 'carrierwave', '~> 2.0'
 
 gem 'mini_magick'
 
+#checking page http statuses
+gem 'faraday'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
