@@ -1,19 +1,18 @@
 class OpinionsController < ApplicationController
-  before_action :set_opinion, only: [:show, :edit, :update, :destroy]
+  before_action :set_opinion, only: %i[show edit update destroy]
   before_action :authenticate_user!
   # GET /opinions
   # GET /opinions.json
   def index
     @user = current_user
-    @users= User.all.order("users.created_at desc")
+    @users = User.all.order('users.created_at desc')
     @opinion = Opinion.new
-    @opinions = Opinion.all.order("opinions.created_at desc")
+    @opinions = Opinion.all.order('opinions.created_at desc')
   end
 
   # GET /opinions/1
   # GET /opinions/1.json
-  def show
-  end
+  def show; end
 
   # GET /opinions/new
   def new
@@ -22,8 +21,7 @@ class OpinionsController < ApplicationController
   end
 
   # GET /opinions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /opinions
   # POST /opinions.json
@@ -63,13 +61,14 @@ class OpinionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_opinion
-      @opinion = Opinion.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def opinion_params
-      params.require(:opinion).permit(:content)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_opinion
+    @opinion = Opinion.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def opinion_params
+    params.require(:opinion).permit(:content)
+  end
 end

@@ -9,7 +9,7 @@
                 <div class="brand d-inline-flex">
                 <a class="navbar-brand" href="#">
                     <% if current_user.photo.url.nil? %>  
-                    <%= image_tag "/uploads/user/photo/9/sword.jpg", alt: "profile", width: "80", class: " rounded-circle"%>
+                    <%= image_tag "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "profile", width: "80", class: " rounded-circle"%>
                     <% else %>
                     <%= image_tag current_user.photo.url.to_s , alt: "logo", width: 80, class: "rounded-circle"%>
                     <% end %>                    

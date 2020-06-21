@@ -1,9 +1,7 @@
-# frozen_string_literal: true
-
 class Registrations::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_same_user, only: %i[edit update destroy]
 
   # GET /resource/sign_up
   # def new
@@ -60,10 +58,4 @@ class Registrations::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  def require_same_user
-    if current_user != @user
-        flash[:danger] = "You do not have permission to perform that action."
-        redirect_to root_path 
-    end    
-  end
 end
