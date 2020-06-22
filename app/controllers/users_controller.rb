@@ -2,15 +2,17 @@ class UsersController < ApplicationController
   before_action :set_current_user, only: %i[show index destroy]
 
   def index
-    @users = User.all
+    @users = User.all.ordered_by_most_recent
     @opinion = Opinion.new
     @user = current_user
+    @all_friendships = Friendship.all.ordered_by_most_recent
   end
 
   def show
-    @users = User.all
+    @users = User.all.ordered_by_most_recent
     @user = User.find(params[:id])
     @opinion = Opinion.new
+    @all_friendships = Friendship.all.ordered_by_most_recent
     @opinions = @user.opinions.ordered_by_most_recent
   end
 

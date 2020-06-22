@@ -19,8 +19,8 @@
                     <%= link_to current_user.first_names, user_path(current_user), class: "nav-link align-self-center p-0 text-capitalize text-light"%>
                 </div>
                     <div class="w-100 d-flex text-center py-4 justify-content-between">
-                        <div class="col-6"> <p class="text-white"><%= current_user.friendships.following(current_user).count%></p> <p class="following text-light">Following</p></div>
-                        <div class="col-6"> <p class="text-white"><%= Friendship.all.followers(current_user).count%></p> <p class="following text-light">Followers</p></div>
+                        <div class="col-6"> <p class="text-white"><%= current_user.friendships.count%></p> <p class="following text-light">Following</p></div>
+                        <div class="col-6"> <p class="text-white"><%= @all_friendships.followers(current_user).count%></p> <p class="following text-light">Followers</p></div>
                     </div>
             
                     <ul class="navbar-nav w-100 my-2">

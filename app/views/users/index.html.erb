@@ -18,9 +18,9 @@
          <p class="card-title text-center pt-4"><%= link_to user.first_names, user_path(user), class: "text-dark  text-capitalize" %></p>
         <div class="card-body text-center">
           <%if (current_user.id != user.id)%>
-            <% if Friendship.where(user_id: current_user.id, follower_id: user.id).exists?  %>
+            <% if @all_friendships.where(user_id: current_user.id, follower_id: user.id).exists? %>
               <%= link_to "Unfollow", unfollow_path(:id => user.id), method: :delete, data: {confirm: "You are about to Unfollow #{user.last_name}"}, class: "card-link btn btn-danger"%>
-            <%elsif !Friendship.where(user_id: current_user.id, follower_id: user.id).exists? %>
+            <%else %>
               <%= link_to "Follow", follow_path(:id => user.id), class: "card-link btn btn-primary"%>
 
             <% end %>

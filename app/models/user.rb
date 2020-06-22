@@ -14,4 +14,6 @@ class User < ApplicationRecord
 
   mount_uploader :photo, ProfileImageUploader
   mount_uploader :cover_image, ProfileImageUploader
+
+  scope :ordered_by_most_recent, -> { order(created_at: :desc) }
 end

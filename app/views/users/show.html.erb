@@ -62,14 +62,14 @@
       <% end %>
     </div>
     <div class="tab-pane container fade" id="following">
-        <% @user.friendships.following(@user).each do |following|%>
+        <% @user.friendships.each do |following|%>
             <div class="card">
                 <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.follower.first_names, user_path(following.follower), class: "text-capitalize" %></h5></div>
             </div>
         <% end %>
     </div>
     <div class="tab-pane container fade" id="followers">
-        <% Friendship.all.followers(@user).each do |following|%>
+        <% @all_friendships.followers(@user).each do |following|%>
             <div class="card">
                 <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.user.first_names, user_path(following.user), class: "text-capitalize" %></h5></div>
             </div>
@@ -100,7 +100,7 @@
     </div>
     <div class="card-body d-flex text-center justify-content-center">
         <div class="tile p-3 border mx-2 rounded">
-            <p class="text-light"><%= @user.friendships.following(@user).count %></p>
+            <p class="text-light"><%= @user.friendships.count %></p>
             <p class="text-white">Following</p>
         </div>
         <div class="tile p-3 border mx-2 rounded">
@@ -108,14 +108,14 @@
             <p class="text-white">Posts</p>
         </div>
         <div class="tile p-3 border mx-2 rounded">
-            <p class="text-light"><%= Friendship.all.followers(@user).count %></p>
+            <p class="text-light"><%= @all_friendships.followers(@user).count %></p>
             <p class="text-white"> Followers</p>
         </div>
        
     </div>
   </div>
     <h4 class="text-center text-secondary my-4 ">List of all Followers</h4>
-      <% Friendship.all.followers(@user).each do |following|%>
+      <% @all_friendships.followers(@user).each do |following|%>
       <%if (@current_user.id != following.user.id)%>
       
        <div class="card flex-row my-2">

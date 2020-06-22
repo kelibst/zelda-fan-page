@@ -50,22 +50,22 @@
         </div>
       <% end %>
     </div>
-    <div class="tab-pane container fade" id="comments">
-      <% @user.friendships.following(@user).each do |following|%>
+    <div class="tab-pane container fade my-4" id="comments">
+      <% @user.friendships.each do |following|%>
       <div class="card">
           <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.follower.first_names, user_path(following.follower), class: "text-capitalize" %></h5></div>
       </div>
       <% end %>
     </div>
     <div class="tab-pane container fade" id="followers">
-      <% Friendship.all.followers(@user).each do |following|%>
+      <% @all_friendships.followers(@user).each do |following|%>
       <div class="card">
           <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.user.first_names, user_path(following.user), class: "text-capitalize" %></h5></div>
       </div>
       <% end %>
     </div>
   </div>
-  </div>
+  </main>
 
   <div class="col-sm-4 py-4">
     <div class="container-fluid my-4">
@@ -88,4 +88,4 @@
       <% end %>
       
       <% end %>
-</main>
+</div>
