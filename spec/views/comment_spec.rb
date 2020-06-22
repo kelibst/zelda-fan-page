@@ -14,14 +14,6 @@ describe 'Testing post controller and views', type: :feature do
     end
     click_button 'commit'
   end
-  it 'A valid user can send a post or opinion' do
-    visit '/'
-    within('main') do
-      fill_in 'opinion[content]', with: 'Some random contents'
-    end
-    click_button 'Create Opinion'
-    expect(page).to have_content 'Some random contents'
-  end
 
   it 'should be able to create a comment on a post' do
     visit '/'
