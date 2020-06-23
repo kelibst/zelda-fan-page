@@ -2,16 +2,17 @@ class UsersController < ApplicationController
   before_action :set_current_user, only: %i[show index destroy]
 
   def index
-    @users = User.all.ordered_by_most_recent
+    @users = User.paginate(page: params[:page], per_page: 3).ordered_by_most_recent
     @opinion = Opinion.new
     @user = current_user
     @all_friendships = Friendship.all.ordered_by_most_recent
   end
 
   def show
-    @users = User.all.ordered_by_most_recent
+    @users = User.paginate(:page => params[:page]).ordered_by_most_recent
     @user = User.find(params[:id])
     @opinion = Opinion.new
+    @user_friendships = @user.friendships.ordered_by_most_recent
     @all_friendships = Friendship.all.ordered_by_most_recent
     @opinions = @user.opinions.ordered_by_most_recent
   end
@@ -20,10 +21,6 @@ class UsersController < ApplicationController
 
   def set_current_user
     @current_user = User.find(current_user.id)
-  end
-
-  def add_profile
-    @user
   end
 
   def require_same_user

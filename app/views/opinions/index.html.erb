@@ -8,6 +8,8 @@
   <div class="container-fluid p-4 my-4">
     <h4 class="display-5 font-weight-bolder text-secondary">Say something about <span class="text-danger">The legend of Zelda</span></h4>
 
+    
+    
     <%= render 'opinions/form', obj: @opinion %>
 
     
@@ -28,6 +30,8 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div class="tab-pane container active" id="post">
+
+    
       <% @opinions.each do |opinion| %>
         <div class="card my-4">
           
@@ -71,6 +75,7 @@
     <div class="container-fluid my-4">
       <h6 class="display-6 text-uppercase font-weight-bolder text-secondary">Who to follow <i class="fas float-right fa-recycle"></i></h6> 
     </div>
+   
       <% @users.each do |user| %>
       <% if !following?(user) && @current_user.id != user.id%>
        <div class="card flex-row my-2">
@@ -86,6 +91,8 @@
         </div>
         
       <% end %>
-      
+     
       <% end %>
+      
+      
 </div>

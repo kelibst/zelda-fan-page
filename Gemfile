@@ -45,6 +45,8 @@ gem 'carrierwave', '~> 2.0'
 
 gem 'mini_magick'
 
+gem 'will_paginate-bootstrap4'
+
 # checking page http statuses
 gem 'faraday'
 

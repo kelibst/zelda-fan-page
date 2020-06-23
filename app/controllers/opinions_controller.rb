@@ -8,7 +8,7 @@ class OpinionsController < ApplicationController
     @users = User.all.ordered_by_most_recent
     @opinion = Opinion.new
     @all_friendships = Friendship.all.ordered_by_most_recent
-    @opinions = Opinion.all.ordered_by_most_recent
+    @opinions = Opinion.paginate(page: params[:page], per_page: 5).ordered_by_most_recent
   end
 
   # GET /opinions/1
@@ -72,4 +72,6 @@ class OpinionsController < ApplicationController
   def opinion_params
     params.require(:opinion).permit(:content)
   end
+
+
 end

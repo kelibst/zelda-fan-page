@@ -13,6 +13,9 @@
 
   <div class="col-sm-4 py-4 users">
     <h4 class="text-center text-secondary">List of all Users</h4>
+    <div class="row justify-content-center py-4">
+      <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    </div>
       <% @users.each do |user| %>
        <div class="card">
          <p class="card-title text-center pt-4"><%= link_to user.first_names, user_path(user), class: "text-dark  text-capitalize" %></p>
