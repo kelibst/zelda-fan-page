@@ -72,6 +72,4 @@ class OpinionsController < ApplicationController
   def opinion_params
     params.require(:opinion).permit(:content)
   end
-
-
 end
