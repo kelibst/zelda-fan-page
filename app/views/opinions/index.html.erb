@@ -30,7 +30,9 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div class="tab-pane container active" id="post">
-
+        <div class="row justify-content-center py-4">
+          <%= will_paginate @opinions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+        </div>
     
       <% @opinions.each do |opinion| %>
         <div class="card my-4">
@@ -75,7 +77,8 @@
     <div class="container-fluid my-4">
       <h6 class="display-6 text-uppercase font-weight-bolder text-secondary">Who to follow <i class="fas float-right fa-recycle"></i></h6> 
     </div>
-   
+      <div class="row justify-content-center py-4">
+      </div>
       <% @users.each do |user| %>
       <% if !following?(user) && @current_user.id != user.id%>
        <div class="card flex-row my-2">

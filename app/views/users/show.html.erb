@@ -69,7 +69,7 @@
         <% end %>
     </div>
     <div class="tab-pane container fade" id="followers">
-        <% @all_friendships.followers(@user).each do |following|%>
+        <% @user_follower.each do |following|%>
             <div class="card">
                 <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.user.first_names, user_path(following.user), class: "text-capitalize" %></h5></div>
             </div>
@@ -108,14 +108,17 @@
             <p class="text-white">Posts</p>
         </div>
         <div class="tile p-3 border mx-2 rounded">
-            <p class="text-light"><%= @all_friendships.followers(@user).count %></p>
+            <p class="text-light"><%= @user_follower.count %></p>
             <p class="text-white"> Followers</p>
         </div>
        
     </div>
   </div>
     <h4 class="text-center text-secondary my-4 ">List of all Followers</h4>
-      <% @all_friendships.followers(@user).each do |following|%>
+    <div class="row justify-content-center py-4">
+      <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    </div>
+      <% @user_followers.each do |following|%>
       <%if (@current_user.id != following.user.id)%>
       
        <div class="card flex-row my-2">
