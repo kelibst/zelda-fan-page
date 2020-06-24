@@ -47,9 +47,7 @@ gem 'mini_magick'
 
 gem 'will_paginate-bootstrap4'
 
-# checking page http statuses
-gem 'faraday'
-
+gem 'fog-aws'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

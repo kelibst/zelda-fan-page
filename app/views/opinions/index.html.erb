@@ -2,7 +2,7 @@
 
 <main class="col-sm-8 m-0 p-0">
   <div class="container-fluid p-0 cover-img">
-   
+   #replace this placeholder later
     <%= image_tag "/uploads/user/cover_image/9/zelda3.jpg", alt: "cover image", class: "img-contain"%>
   </div>
   <div class="container-fluid p-4 my-4">
@@ -81,9 +81,9 @@
       </div>
       <% @users.each do |user| %>
       <% if !following?(user) && @current_user.id != user.id%>
-       <div class="card flex-row my-2">
-          
-          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="Logo" style="width:120px;" class="card-img-top m-4 rounded-circle">
+       <div class="card flex-column flex-lg-row my-2">
+          #fix these placeholders laterr
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="Logo" style="width:120px;" class="card-img-top my-2 mx-auto rounded-circle">
           <div class="card-body text-center">
             <p class="card-title text-center py-4"><%= link_to user.first_names, user_path(user), class: "text-primary  text-capitalize" %></p>
               <% if !following?(user)  %>
