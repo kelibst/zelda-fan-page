@@ -58,4 +58,9 @@ button.bg-dark:focus {
         background-position: -50%;
         background-image: url(https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9);
     }
+    &-gradient{
+        background: rgb(85,180,58);
+        background: linear-gradient(90deg, rgba(85,180,58,1) 0%, rgba(210,10,172,1) 67%, rgba(227,105,84,1) 100%);
+    }
 }
+

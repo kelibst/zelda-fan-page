@@ -1,6 +1,6 @@
 <div class="container-fluid m-0 p-0 bg-light d-sm-flex">
 
-<div class="col-sm-8 m-0 p-0">
+<div class="col-sm-8 bg-gradient m-0 p-0">
   <div class="container-fluid p-0 cover-img">
     <% if @user.cover_image.url.nil? %>  
       <%= image_tag "https://images.unsplash.com/photo-1591468069148-5cc79ed1caaa?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "profile", class: " img-contain"%>
@@ -10,7 +10,7 @@
 
   </div>
 <% unless current_user != @user %>
-  <div class="container-fluid my-4">
+  <div class="container-fluid bg-light my-4">
     <h6 class="text-secondary display-5 font-weight-bolder text-center">Tell the world something you like about <span class="text-danger">The Legend of  Zelda!</span></h6>
 
     <%= render 'opinions/form', obj: @opinion %>
@@ -18,12 +18,12 @@
   </div>
 <% end %>
 
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs bg-light">
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#post">Post</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#following">Following</a>
+      <a class="nav-link " data-toggle="tab" href="#following">Following</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#followers">Followers</a>
@@ -32,7 +32,7 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div class="tab-pane container active" id="post">
+    <div class="tab-pane container bg-light active" id="post">
         <% if @opinions.length > 0 %>
             <p class="my-4"> All Post by: <h4 class="text-secondary text-uppercase font-weight-bolder"><%= @user.first_names%></h4></p>
 
@@ -61,14 +61,14 @@
         </div>
       <% end %>
     </div>
-    <div class="tab-pane container fade" id="following">
+    <div class="tab-pane container bg-light fade" id="following">
         <% @user_friendships.each do |following|%>
             <div class="card">
                 <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.follower.first_names, user_path(following.follower), class: "text-capitalize" %></h5></div>
             </div>
         <% end %>
     </div>
-    <div class="tab-pane container fade" id="followers">
+    <div class="tab-pane container bg-light fade" id="followers">
         <% @user_follower.each do |following|%>
             <div class="card">
                 <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.user.first_names, user_path(following.user), class: "text-capitalize" %></h5></div>

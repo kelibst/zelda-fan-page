@@ -1,11 +1,11 @@
 <div class="container-fluid p-0 m-0  bg-light d-sm-flex">
 
-<main class="col-sm-8 m-0 p-0">
+<main class="col-sm-8 bg-gradient m-0 p-0">
   <div class="container-fluid p-0 cover-img">
    #replace this placeholder later
     <%= image_tag "/uploads/user/cover_image/9/zelda3.jpg", alt: "cover image", class: "img-contain"%>
   </div>
-  <div class="container-fluid p-4 my-4">
+  <div class="container-fluid bg-light p-4 my-4">
     <h4 class="display-5 font-weight-bolder text-secondary">Say something about <span class="text-danger">The legend of Zelda</span></h4>
 
     
@@ -15,7 +15,7 @@
     
   </div>
 
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs bg-light">
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#post">Post</a>
     </li>
@@ -29,7 +29,7 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div class="tab-pane container active" id="post">
+    <div class="tab-pane container bg-light active" id="post">
         <div class="row justify-content-center py-4">
           <%= will_paginate @opinions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
         </div>
@@ -56,14 +56,14 @@
         </div>
       <% end %>
     </div>
-    <div class="tab-pane container fade my-4" id="comments">
+    <div class="tab-pane container bg-light fade my-4" id="comments">
       <% @user.friendships.each do |following|%>
       <div class="card">
           <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.follower.first_names, user_path(following.follower), class: "text-capitalize" %></h5></div>
       </div>
       <% end %>
     </div>
-    <div class="tab-pane container fade" id="followers">
+    <div class="tab-pane container bg-light fade" id="followers">
       <% @all_friendships.followers(@user).each do |following|%>
       <div class="card">
           <div class="card-title"><h5 class="text-center text-secondary"><%= link_to following.user.first_names, user_path(following.user), class: "text-capitalize" %></h5></div>
