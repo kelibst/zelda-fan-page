@@ -48,6 +48,11 @@ button.bg-dark:focus {
     font-size: 20px;
 }
 
+.bg-user-img.height-200 {
+    height: 200px;
+    width: 200px;
+}
+
 .bg {
     
     &-edit-img{
@@ -61,6 +66,15 @@ button.bg-dark:focus {
     &-gradient{
         background: rgb(85,180,58);
         background: linear-gradient(90deg, rgba(85,180,58,1) 0%, rgba(210,10,172,1) 67%, rgba(227,105,84,1) 100%);
+    }
+    &-user-img{
+        width: 120px;
+        background-size: cover;
+        margin: 20px;
+        background-image: red;
+        align-self: center;
+        height: 120px;
+        border-radius: 100px;
     }
 }
 
