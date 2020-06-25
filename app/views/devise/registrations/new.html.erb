@@ -21,14 +21,7 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "last-name" }%>
-    <%= f.label :photo do %> 
-              <%= %"Profile picture"%>
-              <%= f.file_field :photo %>  
-              <% end %><br>
-    <%= f.label       :cover_image do %> 
-    <%= %"Cover picture"%>
-    <%= f.file_field  :cover_image %>  
-                      <% end %>
+    
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -40,6 +33,18 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+
+                <%= f.label :photo do %> 
+              
+                  <div class="btn bg-button-red text-white w-100">Upload Profile image </div>
+                  <%= f.file_field :photo %>  
+                  <% end %><br>
+        <%= f.label       :cover_image do %> 
+        
+        <p class="btn bg-button-green text-white w-100">Upload Cover image </p>
+        <%= f.file_field  :cover_image,
+                          required: true %>  
+                          <% end %>
   </div>
 
   <div class="form-actions">

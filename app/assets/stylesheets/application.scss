@@ -57,6 +57,20 @@ button.bg-dark:focus {
     width: 160px;
 }
 
+#user_photo, #user_cover_image{
+    visibility: hidden;
+}
+
+.bg-button{
+    &-green{
+    background: linear-gradient(90deg, #9ebd13 0%, #008552 100%);
+    }
+
+    &-red{
+        background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+    }
+}
+
 .bg {
     
     &-edit-img{

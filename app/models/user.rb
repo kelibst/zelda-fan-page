@@ -5,13 +5,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :opinions, dependent: :destroy
   has_many :comments, dependent: :destroy
+
   validate :picture_size
 
   has_many :friendships, dependent: :destroy
   has_many :followers, class_name: 'Friendship', foreign_key: 'follower_id', dependent: :destroy
 
   validates :first_names, presence: true, length: { in: 3..200 }
-  validates :last_name, presence: true, length: { in: 3..100 }
+  validates :photo, presence: true
+  validates :cover_image, presence: true
+
+  validates :first_names, presence: true, length: { in: 3..200 }
 
   mount_uploader :photo, ProfileImageUploader
   mount_uploader :cover_image, ProfileImageUploader
