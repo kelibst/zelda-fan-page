@@ -41,7 +41,7 @@
                   <% end %><br>
         <%= f.label       :cover_image do %> 
         
-        <p class="btn bg-button-green text-white w-100">Upload Cover image </p>
+        <div class="btn bg-button-green text-white w-100">Upload  Cover image </div>
         <%= f.file_field  :cover_image,
                           required: true %>  
                           <% end %>
@@ -65,7 +65,7 @@
   $('#user_cover_image').bind('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;
     console.log(this.files[0].size/1024/1024)
-    if (size_in_megabytes > 2){
+    if (size_in_megabytes > 1){
       alert("Maximum file size is 2Mb")
     }
   })     
