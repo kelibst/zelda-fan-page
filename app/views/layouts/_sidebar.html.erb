@@ -8,11 +8,14 @@
                 <nav class="navbar sticky-top bg-dark flex-column align-items-start navbar-dark ">
                 <div class="brand d-inline-flex">
                 <a class="navbar-brand" href="#">
-                    <% if current_user.photo.url.nil? %>  
-                    <%= image_tag "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "profile", width: "80", class: " rounded-circle"%>
-                    <% else %>
-                    <%= image_tag current_user.photo.url.to_s , alt: "logo", width: 80, class: "rounded-circle"%>
-                    <% end %>                    
+                <% if current_user.photo.url.nil? %>  
+    
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="Logo" style="width:120px;" class="card-img-top m-lg-4 my-2 m-lg-4 mx-auto rounded-circle">
+                <% else %>
+                 <div class="bg-user-img height-160 m-0" style="background-image: url(<%= current_user.photo.to_s%>)">
+         
+                 </div>
+                 <% end %>                   
                 </a>
                     
 

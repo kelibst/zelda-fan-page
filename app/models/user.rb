@@ -19,8 +19,6 @@ class User < ApplicationRecord
   scope :ordered_by_most_recent, -> { order(created_at: :desc) }
 
   def picture_size
-    if photo.size > 2.megabytes || cover_image.size > 2.megabytes
-      errors.add(:photo, "should be less than 5Mb")
-    end
+    errors.add(:photo, 'should be less than 5Mb') if photo.size > 2.megabytes || cover_image.size > 2.megabytes
   end
 end

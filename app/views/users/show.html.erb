@@ -37,7 +37,7 @@
             <p class="my-4"> All Post by: <h4 class="text-secondary text-uppercase font-weight-bolder"><%= @user.first_names%></h4></p>
 
             <% else %>
-            <h4 class="text-secondary my-4 font-weight-bolder text-center"><%= @user.first_names%> has no posts yet!</h4>
+            <h4 class="text-secondary my-4 font-weight-bolder text-center"><%= @user.first_names%> has no posts</h4>
        <% end %>
       <% @opinions.each do |opinion| %>
         <div class="card my-4">
@@ -95,31 +95,31 @@
 
     <h4 class="text-light font-weight-bolder my-4 card-title text-center text-uppercase"><%= "#{@user.first_names} #{@user.last_name}"%></h4>
     <div class="container-fluid my-4">
-      <% if !following?(@user) && current_user != @user %>
+      <% if  !following?(@user) && current_user != @user %>
           <%= link_to "Follow", follow_path(:id => @user.id), class: "card-link w-100 btn btn-success"%>
-          <% else %>
+          <% elsif current_user == @user %>
           <%= link_to "Edit Profile", edit_user_registration_path(:id=> @user.id), class: "card-link w-100 btn btn-success"%>
       <% end %>
     </div>
-    <div class="card-body d-flex text-center justify-content-center">
-        <div class="tile p-3 border mx-2 rounded">
+    <div class="card-body d-flex text-center justify-content-even">
+        <div class="tile  border  rounded">
             <p class="text-light"><%= @user_friendships.count %></p>
-            <p class="text-white">Following</p>
+            <p class="text-white px-1  px-md-2">Following</p>
         </div>
-        <div class="tile p-3 border mx-2 rounded">
+        <div class="tile  border  rounded">
             <p class="text-light"><%= @user.opinions.all.count %></p>
-            <p class="text-white">Posts</p>
+            <p class="text-white px-1 px-md-2">Posts</p>
         </div>
-        <div class="tile p-3 border mx-2 rounded">
+        <div class="tile border  rounded">
             <p class="text-light"><%= @user_follower.count %></p>
-            <p class="text-white"> Followers</p>
+            <p class="text-white px-1 px-md-2"> Followers</p>
         </div>
        
     </div>
   </div>
     <h4 class="text-center text-secondary my-4 ">List of all Followers</h4>
     <div class="row justify-content-center py-4">
-      <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+      <%= will_paginate @user_followers, enderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
     </div>
       <% @user_followers.each do |following|%>
       <%if (@current_user.id != following.user.id)%>
@@ -127,9 +127,11 @@
        <div class="card flex-column flex-lg-row my-2">
        
         <% if following.user.photo.url.nil? %>  
-        <%= image_tag "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9", alt: "profile", width: "120", class: " mx-auto mt-2  rounded-circle"%>
+        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9" alt="Logo" style="width:120px;" class="card-img-top m-lg-4 my-2 m-lg-4 mx-auto rounded-circle">
         <% else %>
-        <%= image_tag following.user.photo.url.to_s , alt: "logo", width: 120, class: "mx-auto mt-2 rounded-circle"%>
+         <div class="bg-user-img" style="background-image: url(<%= following.user.photo.to_s%>)">
+ 
+         </div>
         <% end %>
       
                  

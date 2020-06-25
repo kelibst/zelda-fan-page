@@ -52,6 +52,10 @@ button.bg-dark:focus {
     height: 200px;
     width: 200px;
 }
+.bg-user-img.height-160 {
+    height: 160px;
+    width: 160px;
+}
 
 .bg {
     
@@ -77,4 +81,6 @@ button.bg-dark:focus {
         border-radius: 100px;
     }
 }
-
+.justify-content-even{
+    justify-content: space-evenly;
+}

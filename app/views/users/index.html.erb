@@ -13,7 +13,7 @@
 
   <div class="col-sm-4 py-4 users">
     <h4 class="text-center text-secondary">List of all Users</h4>
-    <div class="row flex-lg-row flex-column justify-content-center py-4">
+    <div class="row flex-lg-row justify-content-center py-4">
       <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
     </div>
       <% @users.each do |user| %>
