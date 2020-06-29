@@ -1,0 +1,78 @@
+<div class="container-fluid">
+<div class="col-sm-8 rounded bg-light mx-auto my-4">
+<div class="row">
+  <div class="col-6 bg-signup-img">
+
+  </div>
+  <div class="col-6">
+
+
+<h2 class="display-5 text-secondary font-weight-bolder text-center my-4">Sign up</h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {multipart: :true}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :first_names,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "first-names" }%>
+     <%= f.input :last_name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "last-name" }%>
+    
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%>
+    <%= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password" } %>
+
+                <%= f.label :photo do %> 
+              
+                  <div class="btn bg-button-red text-white w-100">Upload Profile image </div>
+                  <%= f.file_field :photo %>  
+                  <% end %><br>
+        <%= f.label       :cover_image do %> 
+        
+        <div class="btn bg-button-green text-white w-100">Upload  Cover image </div>
+        <%= f.file_field  :cover_image,
+                          required: true %>  
+                          <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up", class: "btn btn-primary w-100 my-2" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+<script type=text/javascript>
+  $('#user_photo').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    console.log(this.files[0].size/1024/1024)
+    if (size_in_megabytes > 2){
+      alert("Maximum file size is 2Mb")
+    }
+  })  
+  $('#user_cover_image').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    console.log(this.files[0].size/1024/1024)
+    if (size_in_megabytes > 1){
+      alert("Maximum file size is 2Mb")
+    }
+  })     
+</script>
+
+</div>
+</div>
+</div>
+</div>
+

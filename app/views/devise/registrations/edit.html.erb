@@ -1,0 +1,78 @@
+<div class="container-fluid my-5">
+<div class="col-sm-8 rounded bg-light mx-auto my-4">
+<div class="row">
+  <div class="col-6 bg-edit-img">
+
+  </div>
+  <div class="col-6">
+<h2 class="font-weight-bolder text-center text-secondary display-5 my-3">Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  <%= f.input :first_names, required: true, autofocus: true %>
+
+    <%= f.input :email, required: true, autofocus: true %>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <% end %>
+
+      <%= f.label :photo do %> 
+        <%= %"Profile picture"%>
+        <%= f.file_field :photo %>  
+      <% end %>
+      <br>
+
+    <%= f.label :cover_image do %> 
+      <%= %"Cover picture"%>
+      <%= f.file_field  :cover_image %>
+    <% end %>  
+
+    <%= f.input :password,
+                hint: "leave it blank if you don't want to change it",
+                required: false,
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation,
+                required: false,
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :current_password,
+                hint: "we need your current password to confirm your changes",
+                required: false,
+                input_html: { autocomplete: "current-password" } %>
+   
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update",class: "btn btn-success w-100" %>
+  </div>
+<% end %>
+
+<h3 class="display-5 text-secondary mt-5 text-center">Cancel my account</h3>
+<div class="mx-auto text-center">
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+</div>
+<%= link_to "Back", :back, class:"btn btn-secondary w-100" %>
+
+
+<script type=text/javascript>
+  $('#user_photo').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    console.log(this.files[0].size/1024/1024)
+    if (size_in_megabytes > 2){
+      alert("Maximum file size is 2Mb")
+    }
+  })  
+  $('#user_cover_image').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    console.log(this.files[0].size/1024/1024)
+    if (size_in_megabytes > 2){
+      alert("Maximum file size is 2Mb")
+    }
+  })     
+</script>
+</div>
+</div>
+</div>
+</div>
